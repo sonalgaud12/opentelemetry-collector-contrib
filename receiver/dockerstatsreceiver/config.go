@@ -36,7 +36,15 @@ type Config struct {
 
 	// MetricsBuilderConfig config. Enable or disable stats by name.
 	metadata.MetricsBuilderConfig `mapstructure:",squash"`
-	Endpoint                      string
+	Endpoint                      string `mapstructure:"endpoint"`
+
+	// TLS configuration (optional)
+	TLS struct {
+		Enabled  bool
+		CAFile   string
+		CertFile string
+		KeyFile  string
+	}
 }
 
 func (config Config) Validate() error {
